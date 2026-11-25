@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fireline Kitchen</title>
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- ======================= TOP BAR ======================= -->
+  <header id="topbar">
+    <div id="brand">
+      <span id="brand-mark">&#9673;</span>
+      <span id="brand-name">Fireline&nbsp;Kitchen</span>
+    </div>
+    <div id="shift-meter" title="Shift progress">
+      <div id="shift-fill"></div>
+      <span id="shift-label">SHIFT 1</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">SCORE</span>
+      <span id="score-value" class="stat-value">0</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">TIPS</span>
+      <span id="tips-value" class="stat-value gold">$0</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">STREAK</span>
+      <span id="streak-value" class="stat-value">&#9889;0</span>
+    </div>
+    <button id="mute-button" class="icon-button" title="Mute (M)">&#128266;</button>
+    <button id="pause-button" class="icon-button" title="Pause (P)">II</button>
+  </header>
+
+  <main id="kitchen">
+
+    <!-- ======================= ORDER BOARD ======================= -->
+    <section id="order-board" aria-label="Order board">
+      <h2 id="board-title">ORDER BOARD</h2>
+      <ol id="ticket-list"></ol>
+      <div id="rush-banner" hidden>SERVICE RUSH!</div>
+    </section>
+
+    <!-- ======================= WORK STATION ======================= -->
+    <section id="station" aria-label="Assembly station">
+      <!-- Recipes reference card -->
+      <div id="recipe-card">
+        <div id="recipe-head"><span id="recipe-title">TODAY&rsquo;S RECIPES</span></div>
+        <ol id="recipe-list"></ol>
+      </div>
+
+      <!-- Active order + plate -->
+      <div id="prep-area">
+        <div id="active-order">
+          <span class="prep-label">BUILDING</span>
+          <strong id="active-name">&mdash;</strong>
+          <span id="active-slots"></span>
+        </div>
+
+        <div id="plate">
+          <div id="plate-rim">
+            <div id="plate-food"></div>
+          </div>
+          <div id="plate-shine"></div>
+        </div>
+
+        <div id="action-row">
+          <button id="serve-button" class="big-button serve" disabled>&#10148; SERVE &nbsp;<kbd>Enter</kbd></button>
+          <button id="trash-button" class="big-button trash" disabled>&#10005; TRASH &nbsp;<kbd>Bksp</kbd></button>
+        </div>
+        <div id="serve-hint">Serve the ticket whose recipe matches exactly.</div>
+      </div>
+
+      <!-- Tool zones -->
+      <div id="tools">
+        <button id="chop-zone" class="tool-zone" title="Chopping board (C)">
+          <span class="tool-glyph">&#9986;</span>
+          <span class="tool-name">CHOP</span>
+          <span class="tool-sub">needs chopping</span>
+        </button>
+        <div id="cooking-zones"></div>
+      </div>
+    </section>
+
+    <!-- ======================= INGREDIENT COUNTER ======================= -->
+    <section id="counter" aria-label="Ingredient counter">
+      <h2 id="counter-title">INGREDIENTS</h2>
+      <div id="counter-grid"></div>
+      <div id="counter-hint">Click a bin or press 1&ndash;7 to pick it up.</div>
+    </section>
+  </main>
+
+  <!-- ======================= HOLD + MESSAGE ======================= -->
+  <div id="hold-tray">
+    <span class="hold-label">IN HAND</span>
+    <div id="held-slot"><span id="held-empty">empty</span><span id="held-item"></span></div>
+    <span id="held-count"></span>
+  </div>
+  <div id="toast-layer" aria-live="polite"></div>
+
+  <!-- ======================= OVERLAY ======================= -->
+  <div id="overlay">
+    <div id="overlay-card">
+      <div id="overlay-kicker">FIRELINE KITCHEN</div>
+      <h1 id="overlay-title">Dinner Rush</h1>
+      <p id="overlay-body">
+        Orders land on the board. Pick ingredients from the counter with the mouse or keys
+        1&ndash;7, cook what must be cooked, then press <b>Enter</b> to serve the ticket that
+        matches your plate. Serve before the ticket timer runs out &mdash; missed tickets cost
+        you a star.
+      </p>
+      <ul id="overlay-keys">
+        <li><kbd>1</kbd>&ndash;<kbd>7</kbd> pick an ingredient</li>
+        <li><kbd>C</kbd> chop on the board</li>
+        <li><kbd>S</kbd> start / flip / take a pot or pan</li>
+        <li><kbd>X</kbd> drop the held plate into the sink</li>
+        <li><kbd>Enter</kbd> serve the matching ticket &nbsp;&middot;&nbsp; <kbd>Bksp</kbd> trash</li>
+        <li><kbd>P</kbd> pause &nbsp;&middot;&nbsp; <kbd>M</kbd> mute</li>
+      </ul>
+      <button id="start-button" class="big-button serve">OPEN THE PASS &#10148;</button>
+    </div>
+  </div>
+
+</div>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
