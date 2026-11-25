@@ -105,7 +105,3 @@ export function matchRecipe(pieces) {
   return null;
 }
 
-/** The recipes still worth showing on the card, given which have been cooked tonight. */
-export function recipesForShift() {
-  return RECIPES;
-}
